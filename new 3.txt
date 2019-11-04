@@ -1,0 +1,230 @@
+# file_name = 'data/brainweb165a10f17.mha'
+file_name = r'D:\Workspace\PythonProjects\studyProjects\medical\HipHop_2D3Dregistration-master\input_data\HOPE_Test\fixed_images\HipHopReg\Masks\SC_g1_036_Cup_mask.mha'
+image = itk.imread(file_name, pixelType=itk.ctype('float'))
+view(image)
+
+% 测试主动脉
+DRR = self.Projector.compute(np.array([ np.deg2rad(220), np.deg2rad(110),np.deg2rad(90), 0, 0, -800]))
+rescaler = self.RescaleFilterType.New()
+rescaler.SetOutputMinimum(0)
+rescaler.SetOutputMaximum(255)
+rescaler.SetInput(DRR)
+rw.ImageWriter(rescaler.GetOutput(), self.OutputPngImageType, self.CurrentOutputsDir + '\\DRRs\\' + str(save_id), extension = '.tif')
+
+% 循环测试
+import time
+for i in range(0, 370, 36):
+    DRR = self.Projector.compute(np.array([ np.deg2rad(0), np.deg2rad(0),np.deg2rad(i), 0, 0, -800]))
+    rescaler = self.RescaleFilterType.New()
+    rescaler.SetOutputMinimum(0)
+    rescaler.SetOutputMaximum(255)
+    rescaler.SetInput(DRR)
+    rw.ImageWriter(rescaler.GetOutput(), self.OutputPngImageType, self.CurrentOutputsDir + '\\DRRs\\' + str(save_id), extension = '.tif')
+    time.sleep(1)
+
+-153.418 -157.765
+
+import time
+for i in range(0, 370, 10):
+    for j in range(0, 370, 10):
+        for k in range(0, 370, 10):
+            DRR = self.Projector.compute(np.array([ np.deg2rad(i), np.deg2rad(j),np.deg2rad(k), 0, 0, -800]))
+            rescaler = self.RescaleFilterType.New()
+            rescaler.SetOutputMinimum(0)
+            rescaler.SetOutputMaximum(255)
+            rescaler.SetInput(DRR)
+            rw.ImageWriter(rescaler.GetOutput(), self.OutputPngImageType, self.CurrentOutputsDir + '\\DRRs\\' + str(i)+'_'+ str(j)+'_'+ str(k), extension = '.tif')
+            
+
+
+DRR = self.Projector.compute(np.array([-1.72069428e-03,5.91473234e-01,-1.93533452e-01,
+	1.18445500e+01, 5.74022400e+01,-8.18111700e+02]))
+	
+DRR = self.Projector.compute(np.array([ np.deg2rad(-0.09858852), np.deg2rad(33.88892),np.deg2rad(-11.08865), 11.84455, 5.74022400e+01, -8.18111700e+02]))
+rescaler = self.RescaleFilterType.New()
+rescaler.SetOutputMinimum(0)
+rescaler.SetOutputMaximum(255)
+rescaler.SetInput(DRR)
+rw.ImageWriter(rescaler.GetOutput(), self.OutputPngImageType, self.CurrentOutputsDir + '\\DRRs\\' + str(save_id), extension = '.tif')
+
+DRR = self.Projector.compute(np.array([np.deg2rad(10),0.,np.deg2rad(45),
+	1.18445500e+01, 5.74022400e+01,-8.18111700e+02]))
+DRR = self.Projector.compute(np.array([np.deg2rad(15),0.,np.deg2rad(45),
+                                       -3.18445500e+01, 5.74022400e+01,-8.18111700e+02]))
+									   
+									   
+									   
+MaskImgFilepath = glob.glob(r'D:\Workspace\PythonProjects\studyProjects\medical\HipHop_2D3Dregistration-master\myTest\SC_g1_036_Stem_mask.mha')[0] 									   
+MaskImage = rw.ImageReader(MaskImgFilepath, self.MaskImageType, compute_info = False)									   
+									   
+									   
+WriterTypeOutput = itk.ImageFileWriter[self.ImageType]
+            writerMovingImage = WriterTypeOutput.New()
+            writerMovingImage.SetInput(self.derivativeYmovingImage.GetOutput())
+            writerMovingImage.SetFileName('derivativeYmovingImage_'+ str(self.temp_counter_mov) + '.mha')
+            writerMovingImage.Update()   									   
+									   
+1185.41\1253.05\1257.76\1261.18\1263.75\1266.75\1269.74\1269.74\1269.74\1270.6\1270.6\1271.88\1273.6\1268.03\1262.89\1263.75\1265.03\1266.75\1268.89\1269.74\1268.89\1270.6\1271.88\1273.6\1274.88\1276.59\1274.88\1275.74\1277.02\1277.88\1278.73\1280.02\1278.73\1279.59\1280.02\1280.87\1282.59\1283.87\1281.73									   
+									   
+									   
+	最优的								   
+[ 1.74532926e-01  0.00000000e+00  6.10865238e-01 -3.18445500e+01
+  5.74022400e+01 -8.18111700e+02]
+  
+  
+  
+  -0.19747309894666004
+  
+  
+  
+  
+  
+  
+[-11.08865, -0.09858852, 33.88892]
+-0.00172069427866828 0.5914732339449568 -0.1935334521012692
+
+rotation_matrix1 = get_rigid_motion_mat_from_euler(np.deg2rad(30), 'z', np.deg2rad(0), 'x', np.deg2rad(0), 'y',11.844,57.4022,-818.111)
+
+
+D:\MedData\GUO HAI GEN_Fuchsia 2_001.stl
+
+
+import itk import sys import vtk  
+inputfilename="D:/DATA/small/0200.dcm" 
+outputfilename="D:/DATA/0200.png" # 
+# Reads a 2D image in with signed short (16bits/pixel) pixel type
+ # and save it as unsigned char (8bits/pixel) pixel type # 
+InputImageType  = itk.Image.SS2
+ OutputImageType = itk.Image.UC2 
+ reader = itk.ImageFileReader[InputImageType].New() 
+ writer = itk.ImageFileWriter[OutputImageType].New() 
+ filter = itk.RescaleIntensityImageFilter[InputImageType, OutputImageType].New()
+ filter.SetOutputMinimum( 0 )
+ filter.SetOutputMaximum(255)  
+ filter.SetInput( reader.GetOutput() ) 
+ writer.SetInput( filter.GetOutput() )  
+ reader.SetFileName(inputfilename ) 
+ writer.SetFileName(outputfilename ) 
+ writer.Update()
+
+ 
+ ivfilter=itk.ImageToVTKImageFilter[OutputImageType].New() 
+ ivfilter.SetInput(filter.GetOutput()) 
+ viewer=vtk.vtkImageViewer() 
+ iren=vtk.vtkRenderWindowInteractor()
+ viewer.SetupInteractor(iren) 
+ viewer.SetInput(ivfilter.GetOutput()) 
+ viewer.Render() 
+ viewer.SetColorWindow(255) 
+ viewer.SetColorLevel(128) 
+ iren.Start() 
+
+ 
+ from InsightToolkit import * 
+ from sys import argv  
+ fixedImageName="D:/DATA/Brain.png" 
+ movingImageName="D:/DATA/Brainshifted13x17y.png" 
+ outputImageName="D:/DATA/Brainresult2.png" 
+ fixedImageReader  = itkImageFileReaderIF2_New()
+ movingImageReader = itkImageFileReaderIF2_New()  
+ fixedImageReader.SetFileName(  fixedImageName ) 
+ movingImageReader.SetFileName( movingImageName ) 
+ fixedImageReader.Update()
+ movingImageReader.Update() 
+ fixedImage  = fixedImageReader.GetOutput() 
+ movingImage = movingImageReader.GetOutput()  
+ # #  Instantiate the classes for the registration framework 
+ # registration = itkImageRegistrationMethodIF2IF2_New() 
+ imageMetric  = itkMeanSquaresImageToImageMetricIF2IF2_New()
+ transform    = itkTranslationTransformD2_New() 
+ optimizer    = itkRegularStepGradientDescentOptimizer_New()
+ interpolator = itkLinearInterpolateImageFunctionIF2D_New()  
+ registration.SetOptimizer(    optimizer.GetPointer()    )
+ registration.SetTransform(    transform.GetPointer()    ) 
+ registration.SetInterpolator( interpolator.GetPointer() ) 
+ registration.SetMetric(       imageMetric.GetPointer()  )
+ registration.SetFixedImage(  fixedImage  ) 
+ registration.SetMovingImage( movingImage ) 
+ registration.SetFixedImageRegion( fixedImage.GetBufferedRegion() ) 
+ transform.SetIdentity() 
+ initialParameters = transform.GetParameters()
+ registration.SetInitialTransformParameters( initialParameters ) 
+ # # Iteration Observer # 
+ def iterationUpdate():    
+ currentParameter = transform.GetParameters()     
+ print "M: %f   P: %f %f " % ( optimizer.GetValue(),  currentParameter.GetElement(0),  currentParameter.GetElement(1))  
+ iterationCommand = itkPyCommand_New() 
+ iterationCommand.SetCommandCallable( iterationUpdate ) 
+ optimizer.AddObserver( itkIterationEvent(), iterationCommand.GetPointer() )  
+ # #  Define optimizer parameters 
+ # optimizer.SetMaximumStepLength(  4.00 ) 
+ optimizer.SetMinimumStepLength(  0.01 ) 
+ optimizer.SetNumberOfIterations( 200  )  
+ print "Starting registration"  # #  Start the registration process 
+ #  registration.Update()   # 
+ # Get the final parameters of the transformation 
+ # finalParameters = registration.GetLastTransformParameters() 
+ print "Final Registration Parameters " 
+ print "Translation X =  %f" % (finalParameters.GetElement(0),)
+ print "Translation Y =  %f" % (finalParameters.GetElement(1),) 
+ # # Now, we use the final transform for resampling the # moving image. 
+ # resampler = itkResampleImageFilterIF2IF2_New() 
+ resampler.SetTransform( transform.GetPointer()    ) 
+ resampler.SetInput(     movingImage  ) 
+ region = fixedImage.GetLargestPossibleRegion()  
+ resampler.SetSize( region.GetSize() )  
+ resampler.SetOutputSpacing( fixedImage.GetSpacing() )
+ resampler.SetOutputOrigin(  fixedImage.GetOrigin()  ) resampler.SetOutputDirection(  fixedImage.GetDirection()  ) 
+ resampler.SetDefaultPixelValue( 100 )  
+ outputCast = itkRescaleIntensityImageFilterIF2IUC2_New() outputCast.SetOutputMinimum(      0  )
+ outputCast.SetOutputMaximum(  255  ) 
+ outputCast.SetInput(resampler.GetOutput())  # #  Write the resampled image # writer = itkImageFileWriterIUC2_New() 
+ 
+ writer.SetFileName( outputImageName )
+ writer.SetInput( outputCast.GetOutput() ) 
+ writer.Update() 
+ print "image registration has been finished"
+ 
+
+ 
+Similarity: -0.934764
+Position: [-0.045300773081376734, 0.13593204637982034, 0.01615104078630927, 3.4164078649987384, 4.273384491325097, 4.729828055673441]
+Similarity: -0.989079
+Position: [-0.0559189622181989, 0.0788372465281042, 0.025665803217289552, 4.593764915531398, 4.870644601871217, 5.017663157098914]
+Similarity: -0.998194
+Position: [-0.05260549841909669, 0.06979965443187564, 0.03244503352181074, 4.939866690408485, 5.0540216675034, 5.017663157098914]
+Result =
+ Rotation Along X = -3.01407 deg
+ Rotation Along Y = 3.99923 deg
+ Rotation Along Z = 2.06041 deg
+ Translation X = 4.95105 mm
+ Translation Y = 5.05402 mm
+ Translation Z = 5.01766 mm
+ Number Of Iterations = 3
+ Metric value  = -0.998663
+Writing image: Input/boxheadDRRDev1_G0_Reg.tif
+Writing image: Input/boxheadDRRDev1_G90_Reg.tif
+System:              DESKTOP-RBV1F8C
+Processor:           Unknown P6 family
+    Cache:           -1
+    Clock:           3407
+    Physical CPUs:   4
+    Logical CPUs:    4
+    Virtual Memory:  Total: 39904           Available: 10425
+    Physical Memory: Total: 16323           Available: 5672
+OSName:              Windows
+    Release:          Professional
+    Version:          (Build 9200)
+    Platform:        x86
+    Operating System is 64 bit
+ITK Version: 4.13.2
+Name Of Probe (Time)          Iterations     Total (s)      Min (s)        Mean (s)       Max (s)        StdDev (s)
+Registration                  1              398.713        398.713        398.713        398.713        0
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
